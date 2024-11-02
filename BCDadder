@@ -1,0 +1,14 @@
+module bcd(a,b,sum,cout);
+input [3:0]a,b;
+output cout;
+output [3:0]sum;
+wire [3:0]su;
+wire x,y,i,o;
+wire [3:0]be;
+cladd c0(su,x,a,b,1'b0);
+assign i=su[3]&su[2];
+assign y=su[3]&su[1];
+assign cout=x|i|y;
+assign be=cout?4'b0110:4'b0000;
+cladd c1(sum,o,su,be,1'b0);
+endmodule
